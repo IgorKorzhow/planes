@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Program;
-use App\Http\Filters\ProgramFilter;
+use App\Http\Filters\FlightFilter;
 use App\Http\Requests\StoreProgramRequest;
 use App\Http\Requests\UpdateProgramRequest;
 use App\Models\Exercise;
@@ -16,7 +16,7 @@ class ProgramController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(ProgramFilter $filter)
+    public function index(FlightFilter $filter)
     {
         $current_page = $filter->request->query('current_page') ?? 0;
         $per_page = $filter->request->query('per_page') ?? 100000;

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\PassportAuthController;
+use App\Http\Controllers\FlightController;
 use App\Http\Controllers\PlaneController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,15 +20,19 @@ Route::post('register', [PassportAuthController::class, 'register']);
 Route::post('login', [PassportAuthController::class, 'login']);
 Route::get('planes', [PlaneController::class, 'index'])->name('plane.index');
 Route::get('planes/{plane}', [PlaneController::class, 'show'])->name('plane.show');
+Route::get('flights', [FlightController::class, 'index'])->name('flight.index');
+Route::get('flights/{flight}', [FlightController::class, 'show'])->name('flight.show');
+Route::get('places/available/{flight}', [\App\Http\Controllers\PlaceController::class, 'getAvailablePlaces']);
 
 Route::middleware('auth:api')->group(function () {
+    Route::post('tickets/{flight}/buy', [\App\Http\Controllers\TicketController::class, 'buyTicket']);
     Route::post('logout', [PassportAuthController::class, 'logout']);
-    Route::get('get-user', [PassportAuthController::class, 'userInfo']);
     Route::post('change-password', [PassportAuthController::class, 'changePassword']);
-
+    Route::get('user/personal_info', [\App\Http\Controllers\UserController::class, 'personalInfo']);
 
 
     Route::middleware('adminauth')->group(function() {
         Route::resource('planes', PlaneController::class)->except(['index', 'show']);
+        Route::resource('flights', FlightController::class)->except(['index', 'show']);
     });
 });

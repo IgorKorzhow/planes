@@ -22,7 +22,7 @@ function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">
-                <a className="navbar-brand" href="/">Navbar</a>
+                <a className="navbar-brand" href="/">AirlineCompany</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -31,10 +31,10 @@ function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul className="navbar-nav me-auto mb-lg-0">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/">Main Page</NavLink>
+                            <NavLink className="nav-link" to="/">Рейсы</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" aria-current="page" to="/exercises">Exercises</NavLink>
+                            <NavLink className="nav-link" aria-current="page" to="/exercises"></NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/programs">Programs</NavLink>

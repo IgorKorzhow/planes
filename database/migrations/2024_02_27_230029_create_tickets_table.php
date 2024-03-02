@@ -27,7 +27,11 @@ return new class extends Migration
                 ->on('users')
                 ->nullOnDelete();
 
-            $table->integer('place_number');
+            $table->unsignedInteger('place_id');
+
+            $table->foreign('place_id')
+                ->references('id')
+                ->on('places');
 
             $table->string('price');
 

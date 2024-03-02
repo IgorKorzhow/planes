@@ -1,16 +1,13 @@
 import axiosClient from "../axios-client.js";
 
 export default {
-    get(callback) {
-        return axiosClient.get(`/muscleGroup/index`)
-            .then((response) => {
-                callback(response.data);
-            })
+    getUserInfo() {
+        return axiosClient.get(`/user/personal_info`)
             .catch((error) => {
                 const response = error.response;
                 if (response) {
                     console.log(response.data.errors);
                 }
             })
-    }
+    },
 }

@@ -9,5 +9,10 @@
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.7.5",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.3",
+        "react-bootstrap": "^2.10.1",
+        "react-datetime-bootstrap": "^1.4.7"
     }
 }

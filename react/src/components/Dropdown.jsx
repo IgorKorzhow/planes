@@ -12,14 +12,14 @@ function Dropdown({Repository, id, setData, path}) {
         <div className="btn-group">
             <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                Action
+                Действие
             </button>
             <ul className="dropdown-menu">
                 <li>
-                    <NavLink className="dropdown-item" to={path} >Update</NavLink>
+                    <NavLink className="dropdown-item" to={path} >Обновить</NavLink>
                 </li>
                 <li>
-                    <button onClick={deleteButtonHandler} className="dropdown-item">Delete</button>
+                    <button onClick={deleteButtonHandler} className="dropdown-item">Удалить</button>
                 </li>
             </ul>
         </div>

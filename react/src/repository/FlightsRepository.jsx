@@ -2,7 +2,7 @@ import axiosClient from "../axios-client.js";
 
 export default {
     get(queryParams) {
-        return axiosClient.get(`/programs`, {
+        return axiosClient.get(`/flights`, {
             params: {
                 page: queryParams['page'],
                 search: queryParams['search'],
@@ -17,23 +17,8 @@ export default {
             })
     },
 
-    getProgram(id) {
-        return axiosClient.get(`/programs/${id}`)
-            .catch((error) => {
-                const response = error.response;
-                if (response) {
-                    console.log(response.data.errors);
-                }
-            })
-    },
-
-    getLastThreeRecords() {
-        return axiosClient.get(`/programs`, {
-            params: {
-                per_page: 3,
-                last: true
-            }
-        })
+    getFlight(id) {
+        return axiosClient.get(`/flights/${id}`)
             .catch((error) => {
                 const response = error.response;
                 if (response) {
@@ -43,29 +28,21 @@ export default {
     },
 
     post(formData) {
-        return axiosClient.post("/programs", formData)
+        return axiosClient.post("/flights", formData)
             .catch((error) => {
                 console.log(error);
             })
     },
 
     update(data, id) {
-        return axiosClient.patch(`/programs/${id}`, {
-            header:  data["header"],
-            description: data["description"],
-            features: data["features"],
-            exercises: data["exercises"]
-        })
-            .then(response => {
-                console.log(response);
-            })
+        return axiosClient.put(`/flights/${id}`, data)
             .catch(error => {
                 console.log(error);
             });
     },
 
     delete(id) {
-        return axiosClient.delete(`/programs/${id}`)
+        return axiosClient.delete(`/flights/${id}`)
             .catch((error) => {
                 console.log(error);
             })

@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePlaneRequest;
 use App\Http\Requests\UpdatePlaneRequest;
+use App\Models\Flight;
 use App\Models\Plane;
+use Illuminate\Http\Request;
 
 class PlaneController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Plane::all();
+        $current_page = $request->input('current_page') ?? 0;
+        $per_page = $request->input('per_page') ?? 100000;
+        $allPlanes = Plane::paginate($per_page, ['*'], 'page', $current_page);
+
+        return response()->json($allPlanes);
     }
 
     /**

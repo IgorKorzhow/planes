@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
 import {NavLink, useParams} from "react-router-dom";
 import LoadingSpinner from "../../components/LoaderSpinner.jsx";
-import ProgramsRepository from "../../repository/ProgramsRepository.jsx";
+import ProgramsRepository from "../../repository/FlightsRepository.jsx";
 
-function ShowProgram() {
+function ShowFlight() {
     const [program, setProgram] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
@@ -76,4 +76,4 @@ function ShowProgram() {
     );
 }
 
-export default ShowProgram;
+export default ShowFlight;

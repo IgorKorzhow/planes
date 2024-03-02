@@ -2,12 +2,12 @@
 
 namespace App\Http\Filters;
 
-class ProgramFilter extends QueryFilter
+class FlightFilter extends QueryFilter
 {
     public function search(?string $search = null)
     {
         if ($search != null)
-            return $this->builder->where('header', 'like', $search.'%');
+            return $this->builder->where('name', 'like', $search.'%');
     }
 
     public function last(?string $last = null)

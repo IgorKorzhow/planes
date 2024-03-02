@@ -1,6 +1,6 @@
 import Carousel from "../components/Carousel.jsx";
 import {useEffect, useState} from "react";
-import ProgramsRepository from "../repository/ProgramsRepository.jsx";
+import ProgramsRepository from "../repository/FlightsRepository.jsx";
 import LoadingSpinner from "../components/LoaderSpinner.jsx";
 
 function Main() {
