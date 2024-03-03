@@ -22,12 +22,13 @@ class CreatePlaneRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'image' => 'required|file',
             'model' => 'required|max:255',
             'creation_date' => 'required|date',
             'serial_number' => 'required',
             'basic_seats_number' => 'required|integer',
             'premium_seats_number' => 'required|integer',
-            'firm_id' => 'required|exists:firms,id',
+            'firm_id' => 'required|exists:plane_firms,id',
         ];
     }
 }

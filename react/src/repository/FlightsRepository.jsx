@@ -2,10 +2,12 @@ import axiosClient from "../axios-client.js";
 
 export default {
     get(queryParams) {
+        console.log(queryParams['search']);
         return axiosClient.get(`/flights`, {
             params: {
+                searchField: queryParams['search_field'],
                 page: queryParams['page'],
-                search: queryParams['search'],
+                search: queryParams['search_value'],
                 per_page: queryParams['per_page'] ?? 9,
             }
         })

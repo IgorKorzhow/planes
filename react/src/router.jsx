@@ -6,6 +6,8 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import CreateFlight from "./pages/Flights/CreateFlight.jsx";
 import UpdateFlight from "./pages/Flights/UpdateFlight.jsx";
+import Planes from "./pages/Planes/Planes.jsx";
+import CreatePlane from "./pages/Planes/CreatePlane.jsx";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Flights />
+            },
+            {
+                path: '/planes',
+                element: <Planes />
             },
             {
                 path: '/login',
@@ -42,6 +48,14 @@ const router = createBrowserRouter([
                 path: '/flights/update/:id',
                 element: <UpdateFlight />
             },
+            {
+                path: '/planes',
+                element: <Planes />
+            },
+            {
+                path: '/planes/create',
+                element: <CreatePlane />
+            }
             // {
             //     path: '/programs',
             //     element: <Programs />

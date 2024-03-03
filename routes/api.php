@@ -23,6 +23,7 @@ Route::get('planes/{plane}', [PlaneController::class, 'show'])->name('plane.show
 Route::get('flights', [FlightController::class, 'index'])->name('flight.index');
 Route::get('flights/{flight}', [FlightController::class, 'show'])->name('flight.show');
 Route::get('places/available/{flight}', [\App\Http\Controllers\PlaceController::class, 'getAvailablePlaces']);
+Route::get('firms', [\App\Http\Controllers\FirmController::class, 'index']);
 
 Route::middleware('auth:api')->group(function () {
     Route::post('tickets/{flight}/buy', [\App\Http\Controllers\TicketController::class, 'buyTicket']);

@@ -34,25 +34,16 @@ function Navbar() {
                             <NavLink className="nav-link" to="/">Рейсы</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" aria-current="page" to="/exercises"></NavLink>
+                            <NavLink className="nav-link" to="/planes">Самолеты</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/programs">Programs</NavLink>
-                        </li>
-                        { !!token ?
+                        {!!token ?
                             <>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" to="/results">Results</NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" to="/progress">Progress</NavLink>
-                                </li>
                             </>
                             : null
                         }
                     </ul>
                     <div className="navbar-nav mb-2 mb-lg-0">
-                        { !!token ?
+                        {!!token ?
                             <NavLink onClick={Logout} className="nav-link" to="/logout">Logout</NavLink>
                             :
                             <>

@@ -6,13 +6,13 @@ class FlightFilter extends QueryFilter
 {
     public function search(?string $search = null)
     {
-        if ($search != null)
-            return $this->builder->where('name', 'like', $search.'%');
-    }
+        $this->builder->when($this->request->input('searchField') === 'departure_city', function ($query) {
+            $query->where('departure_city', 'like', '%' . $this->request->input('search') . '%');
+        })
+            ->when($this->request->input('searchField') === 'arrival_city', function ($query) {
+                $query->where('arrival_city', 'like', '%' . $this->request->input('search') . '%');
+            });
 
-    public function last(?string $last = null)
-    {
-        if ($last != null)
-            return $this->builder->orderBy('created_at', 'desc');
+        return $this->builder;
     }
 }

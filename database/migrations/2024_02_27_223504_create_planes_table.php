@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('planes', function (Blueprint $table) {
             $table->id();
+            $table->string('img_url');
             $table->string('model');
             $table->date('creation_date');
             $table->string('serial_number');

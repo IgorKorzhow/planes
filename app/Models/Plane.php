@@ -16,7 +16,8 @@ class Plane extends Model
         'serial_number',
         'basic_seats_number',
         'premium_seats_number',
-        'firm_id'
+        'firm_id',
+        'img_url'
     ];
 
     protected $casts = [

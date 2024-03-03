@@ -1,5 +1,5 @@
 import Searchbar from "../../components/Searchbar.jsx";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import LoadingSpinner from "../../components/LoaderSpinner";
 import {useStateContext} from "../../context/contextProvider.jsx";
 import FlightsRepository from "../../repository/FlightsRepository.jsx";
@@ -12,7 +12,7 @@ import TicketRepository from "../../repository/TicketRepository.jsx";
 
 function Flights() {
 
-    const {role} = useStateContext();
+    const {role, token} = useStateContext();
 
     const [flights, setFlights] = useState([]);
     const [selectedFlight, setSelectedFlight] = useState();
@@ -23,6 +23,7 @@ function Flights() {
     const [searchButton, setSearchButton] = useState(0);
     const [availablePlaces, setAvailblePlaces] = useState();
     const [selectedPlace, setSelectedPlace] = useState();
+    const selectedFieldRef = useRef();
 
     const [show, setShow] = useState(false);
 
@@ -47,7 +48,11 @@ function Flights() {
             return
         }
         let queryParams = [];
-        queryParams['search'] = searchField;
+
+        console.log(selectedFieldRef.current.value);
+
+        queryParams['search_field'] = selectedFieldRef.current.value;
+        queryParams['search_value'] = searchField;
         queryParams['page'] = page;
         setIsLoading(true);
         FlightsRepository.get(queryParams)
@@ -72,6 +77,10 @@ function Flights() {
 
     const clickSearchButton = (event) => {
         event.preventDefault();
+        if (selectedFieldRef.current.value === 'default') {
+            alert('выберите поле для поиска');
+            return;
+        }
         setSearchButton(prevState => prevState + 1);
         setPage(1);
         setFlights([]);
@@ -134,8 +143,19 @@ function Flights() {
             </Modal>
 
             <Searchbar
+                fieldsForSearch={[
+                    {
+                        key: 'departure_city',
+                        value: 'Страна отправления'
+                    },
+                    {
+                        key: 'arrival_city',
+                        value: 'Страна прибытия'
+                    },
+                ]}
                 urlCreateLink="/flights/create" nameLink="Создать рейс"
                 withSelect={false} value={searchField} setSearchField={setSearchField}
+                selectRef={selectedFieldRef}
                 clickSearchButton={clickSearchButton}/>
             <div className="container mt-5">
                 <div className="p-2 me-3 w-100 d-flex justify-content-start flex-wrap">
@@ -159,7 +179,7 @@ function Flights() {
                                                 </Button>
                                             </div>
                                             {
-                                                role === "admin" ?
+                                                role === "admin" &&  token ?
                                                     <Dropdown
                                                         path={"/flights/update/" + flight.id}
                                                         setData={setFlights}

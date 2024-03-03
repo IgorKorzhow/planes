@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePlaneRequest;
 use App\Http\Requests\UpdatePlaneRequest;
-use App\Models\Flight;
 use App\Models\Plane;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PlaneController extends Controller
 {
@@ -17,7 +17,7 @@ class PlaneController extends Controller
     {
         $current_page = $request->input('current_page') ?? 0;
         $per_page = $request->input('per_page') ?? 100000;
-        $allPlanes = Plane::paginate($per_page, ['*'], 'page', $current_page);
+        $allPlanes = Plane::with('firm')->paginate($per_page, ['*'], 'page', $current_page);
 
         return response()->json($allPlanes);
     }
@@ -28,6 +28,12 @@ class PlaneController extends Controller
     public function store(CreatePlaneRequest $request)
     {
         $data = $request->validated();
+
+        $image = $data['image'];
+
+        $data['img_url'] = 'storage/' . Storage::put('/img', $image);
+
+        unset($data['image']);
 
         $plane = Plane::create($data);
 

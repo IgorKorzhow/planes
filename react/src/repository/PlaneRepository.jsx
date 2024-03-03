@@ -28,22 +28,12 @@ export default {
             })
     },
 
-    // getFlight(id) {
-    //     return axiosClient.get(`/flights/${id}`)
-    //         .catch((error) => {
-    //             const response = error.response;
-    //             if (response) {
-    //                 console.log(response.data.errors);
-    //             }
-    //         })
-    // },
-    //
-    // post(formData) {
-    //     return axiosClient.post("/flights", formData)
-    //         .catch((error) => {
-    //             console.log(error);
-    //         })
-    // },
+    post(formData) {
+        return axiosClient.post("/planes", formData)
+            .catch((error) => {
+                console.log(error);
+            })
+    },
 
     // update(data, id) {
     //     return axiosClient.patch(`/flights/${id}`, {
@@ -59,13 +49,13 @@ export default {
     //             console.log(error);
     // //         });
     // // },
-    //
-    // delete(id) {
-    //     return axiosClient.delete(`/flights/${id}`)
-    //         .catch((error) => {
-    //             console.log(error);
-    //         })
-    // },
+
+    delete(id) {
+        return axiosClient.delete(`/planes/${id}`)
+            .catch((error) => {
+                console.log(error);
+            })
+    },
 
 
 }
