@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePlaneRequest;
+use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\UpdatePlaneRequest;
 use App\Models\Plane;
 use Illuminate\Http\Request;
@@ -45,7 +46,9 @@ class PlaneController extends Controller
      */
     public function show(Plane $plane)
     {
-        return response()->json(['plane' => $plane]);
+        $plane->load(['firm', 'services.serviceType']);
+
+        return response()->json($plane);
     }
 
     /**
@@ -63,6 +66,21 @@ class PlaneController extends Controller
         $plane->save();
 
         return response()->json(['plane' => $plane->fresh()]);
+    }
+
+    public function createService(CreateServiceRequest $request)
+    {
+        $data = $request->validated();
+
+        $plane = Plane::find($data['plane_id']);
+
+        unset($data['plane_id']);
+
+        $service = $plane->services()->create($data);
+
+        $plane->load(['firm', 'services.serviceType']);
+
+        return response()->json($plane);
     }
 
     /**

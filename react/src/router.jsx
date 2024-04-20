@@ -11,6 +11,8 @@ import CreatePlane from "./pages/Planes/CreatePlane.jsx";
 import UserInfo from "./pages/UserInfo.jsx";
 import Tickets from "./pages/Tickets.jsx";
 import UpdatePlane from "./pages/Planes/UpdatePlane.jsx";
+import ChartBoughtTickets from "./pages/ChartBoughtTickets.jsx";
+import ShowPlane from "./pages/Planes/ShowPlane.jsx";
 
 const router = createBrowserRouter([
     {
@@ -64,33 +66,17 @@ const router = createBrowserRouter([
                 element: <UpdatePlane />
             },
             {
+                path: '/planes/show/:id',
+                element: <ShowPlane />
+            },
+            {
                 path: '/tickets',
                 element: <Tickets />
+            },
+            {
+                path: '/tickets/statistics',
+                element: <ChartBoughtTickets />
             }
-            // {
-            //     path: '/programs',
-            //     element: <Programs />
-            // },
-            // {
-            //     path: '/programs/create',
-            //     element: <CreateProgram />
-            // },
-            // {
-            //     path: '/programs/update/:id',
-            //     element: <UpdateProgram />
-            // },
-            // {
-            //     path: '/progress',
-            //     element: <Progress />
-            // },
-            // {
-            //     path: '/results/createCompletedExercise',
-            //     element: <CreateCompletedExercise />
-            // },
-            // {
-            //     path: '/results',
-            //     element: <Results />
-            // },
         ]
     },
     {

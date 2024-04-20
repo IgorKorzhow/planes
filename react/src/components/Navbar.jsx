@@ -4,7 +4,7 @@ import axiosClient from "../axios-client.js";
 
 function Navbar() {
 
-    const {token, setToken} = useStateContext();
+    const {token, setToken, role} = useStateContext();
     const Logout = (event) => {
         event.preventDefault();
         axiosClient.post("/logout")
@@ -39,6 +39,11 @@ function Navbar() {
                         {!!token ?
                             <>
                                 <NavLink className="nav-link" to="/tickets">Билеты</NavLink>
+                                {
+                                    role === 'admin' ?
+                                        <NavLink className="nav-link" to="/tickets/statistics">Статистика</NavLink>
+                                        : <></>
+                                }
                             </>
                             : null
                         }
@@ -46,13 +51,13 @@ function Navbar() {
                     <div className="navbar-nav mb-2 mb-lg-0">
                         {!!token ?
                             <>
-                                <NavLink to="/user-info" className="nav-link" >Profile</NavLink>
-                                <NavLink onClick={Logout} className="nav-link" to="/logout">Logout</NavLink>
+                                <NavLink to="/user-info" className="nav-link" >Профиль</NavLink>
+                                <NavLink onClick={Logout} className="nav-link" to="/logout">Выйти</NavLink>
                             </>
                             :
                             <>
-                                <NavLink className="nav-link" to="/login">Login</NavLink>
-                                <NavLink className="nav-link" to="/register">Register</NavLink>
+                                <NavLink className="nav-link" to="/login">Войти</NavLink>
+                                <NavLink className="nav-link" to="/register">Зарегистрироваться</NavLink>
                             </>
                         }
                     </div>

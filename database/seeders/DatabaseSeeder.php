@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Flight;
 use App\Models\Plane;
 use App\Models\PlaneFirm;
+use App\Models\ServiceType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
         Flight::factory()->count(10)->create();
         PlaneFirm::factory()->count(10)->create();
         Plane::factory()->count(10)->create();
+        ServiceType::factory()->count(10)->create();
 
         // \App\Models\UserResource::factory(10)->create();
 

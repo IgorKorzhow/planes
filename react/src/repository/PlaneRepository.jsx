@@ -52,6 +52,13 @@ export default {
             });
     },
 
+    createService(data) {
+        return axiosClient.post('planes/services', data)
+            .catch(error => {
+                console.log(error);
+            });
+    },
+
     delete(id) {
         return axiosClient.delete(`/planes/${id}`)
             .catch((error) => {

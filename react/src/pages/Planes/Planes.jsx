@@ -4,6 +4,8 @@ import LoadingSpinner from "../../components/LoaderSpinner";
 import {useStateContext} from "../../context/contextProvider.jsx";
 import PlaneRepository from "../../repository/PlaneRepository.jsx";
 import Dropdown from "../../components/Dropdown.jsx";
+import Button from "react-bootstrap/Button";
+import {useNavigate} from "react-router-dom";
 
 
 function Flights() {
@@ -16,6 +18,9 @@ function Flights() {
     const [searchField, setSearchField] = useState("");
     const [searchButton, setSearchButton] = useState(0);
     const [planes, setPlanes] = useState([]);
+    const navigate = useNavigate();
+
+
 
     const fetchData = () => {
         if (!isExistNewPlane) {
@@ -34,6 +39,10 @@ function Flights() {
                 setIsLoading(false);
             })
     }
+
+    const handleClickShow = (planeId) => {
+        navigate(`/planes/show/${planeId}`);
+    };
 
     const handleScroll = () => {
         if ((window.innerHeight + window.scrollY) + 1 > document.body.offsetHeight) {
@@ -71,14 +80,20 @@ function Flights() {
                             return (
                                 <div key={plane.id} className="card m-2" style={{width: 23.5 + '%'}}>
                                     <img src={'http://localhost:8000/' + plane.img_url} className="card-img-top" alt="..." />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Фирма {plane.firm.name}</h6>
-                                            <h6 className="card-title">Модель {plane.model}</h6>
-                                            <p>Серийный номер {plane.serial_number}</p>
-                                            <p>Число базовых сидений {plane.basic_seats_number}</p>
-                                            <p>Число премиумных сидений {plane.premium_seats_number}</p>
+                                    <div className="card-body">
+                                        <h6 className="card-title">Фирма {plane.firm.name}</h6>
+                                        <h6 className="card-title">Модель {plane.model}</h6>
+                                        <p>Серийный номер {plane.serial_number}</p>
+                                        <p>Число базовых сидений {plane.basic_seats_number}</p>
+                                        <p>Число премиумных сидений {plane.premium_seats_number}</p>
+                                        <div className="d-flex justify-content-between">
+                                            <div>
+                                                <Button variant="primary" onClick={() => handleClickShow(plane.id)}>
+                                                    Открыть
+                                                </Button>
+                                            </div>
                                             {
-                                                role === "admin" &&  token ?
+                                                role === "admin" && token ?
                                                     <Dropdown
                                                         path={"/planes/update/" + plane.id}
                                                         setData={setPlanes}
@@ -89,8 +104,9 @@ function Flights() {
                                                     <></>
                                             }
                                         </div>
+                                    </div>
                                 </div>
-                        )
+                            )
                         })
                     }
                 </div>

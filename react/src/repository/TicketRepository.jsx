@@ -18,5 +18,9 @@ export default {
                     console.log(response.data.errors);
                 }
             })
+    },
+
+    getStatistics() {
+        return axiosClient.get('/tickets/statistics')
     }
 }
