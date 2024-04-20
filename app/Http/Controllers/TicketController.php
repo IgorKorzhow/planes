@@ -31,4 +31,11 @@ class TicketController extends Controller
 
         return response()->json($boughtPlace);
     }
+
+    public function getTickets()
+    {
+        $user = Auth::user();
+
+        return response()->json($user->tickets()->with(['plane', 'flight', 'place'])->get());
+    }
 }

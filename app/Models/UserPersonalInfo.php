@@ -10,6 +10,10 @@ class UserPersonalInfo extends Model
 {
     use HasFactory;
 
+    protected $connection = 'sqlite';
+
+    protected $table = 'user_personal_infos';
+
     protected $fillable = [
         'first_name',
         'second_name',

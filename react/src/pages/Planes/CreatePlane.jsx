@@ -4,7 +4,7 @@ import {useStateContext} from "../../context/contextProvider.jsx";
 import FirmRepository from "../../repository/FirmRepository.jsx";
 import PlaneRepository from "../../repository/PlaneRepository.jsx";
 
-function CreateFlight() {
+function CreatePlane() {
 
     const {role} = useStateContext();
 
@@ -97,4 +97,4 @@ function CreateFlight() {
     );
 }
 
-export default CreateFlight;
+export default CreatePlane;

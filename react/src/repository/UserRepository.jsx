@@ -10,4 +10,14 @@ export default {
                 }
             })
     },
+
+    update(data) {
+        return axiosClient.put('/user/personal_info', data)
+            .catch((error) => {
+                const response = error.response;
+                if (response) {
+                    console.log(response.data.errors);
+                }
+            })
+    }
 }

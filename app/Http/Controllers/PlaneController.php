@@ -55,9 +55,14 @@ class PlaneController extends Controller
     {
         $data = $request->validated();
 
-        $plane->update($data);
+        $plane->model = $data['model'];
+        $plane->creation_date = $data['creation_date'];
+        $plane->basic_seats_number = $data['basic_seats_number'];
+        $plane->premium_seats_number = $data['premium_seats_number'];
+        $plane->firm_id = $data['firm_id'];
+        $plane->save();
 
-        return response()->json(['plane' => $plane]);
+        return response()->json(['plane' => $plane->fresh()]);
     }
 
     /**

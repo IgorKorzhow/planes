@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
-                ->on('user');
+                ->on('users');
 
             $table->string('first_name');
             $table->string('second_name');

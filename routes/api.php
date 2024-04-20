@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\PassportAuthController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\PlaneController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::middleware('auth:api')->group(function () {
     Route::post('logout', [PassportAuthController::class, 'logout']);
     Route::post('change-password', [PassportAuthController::class, 'changePassword']);
     Route::get('user/personal_info', [\App\Http\Controllers\UserController::class, 'personalInfo']);
+    Route::put('user/personal_info', [\App\Http\Controllers\UserController::class, 'personalInfoUpdate']);
+    Route::get('tickets', [TicketController::class, 'getTickets']);
 
 
     Route::middleware('adminauth')->group(function() {

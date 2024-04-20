@@ -21,7 +21,7 @@ class Plane extends Model
     ];
 
     protected $casts = [
-        'creation_date' => 'date'
+        'creation_date' => 'date:Y-m-d'
     ];
 
     public function firm(): BelongsTo

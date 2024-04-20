@@ -8,6 +8,9 @@ import CreateFlight from "./pages/Flights/CreateFlight.jsx";
 import UpdateFlight from "./pages/Flights/UpdateFlight.jsx";
 import Planes from "./pages/Planes/Planes.jsx";
 import CreatePlane from "./pages/Planes/CreatePlane.jsx";
+import UserInfo from "./pages/UserInfo.jsx";
+import Tickets from "./pages/Tickets.jsx";
+import UpdatePlane from "./pages/Planes/UpdatePlane.jsx";
 
 const router = createBrowserRouter([
     {
@@ -36,10 +39,10 @@ const router = createBrowserRouter([
         path: '/',
         element: <AuthorizedLayout />,
         children: [
-            // {
-            //     path: '/exercises',
-            //     element: <Exercises />
-            // },
+            {
+                path: '/user-info',
+                element: <UserInfo />
+            },
             {
                 path: '/flights/create',
                 element: <CreateFlight />
@@ -55,6 +58,14 @@ const router = createBrowserRouter([
             {
                 path: '/planes/create',
                 element: <CreatePlane />
+            },
+            {
+                path: '/planes/update/:id',
+                element: <UpdatePlane />
+            },
+            {
+                path: '/tickets',
+                element: <Tickets />
             }
             // {
             //     path: '/programs',

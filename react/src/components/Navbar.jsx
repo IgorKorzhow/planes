@@ -38,13 +38,17 @@ function Navbar() {
                         </li>
                         {!!token ?
                             <>
+                                <NavLink className="nav-link" to="/tickets">Билеты</NavLink>
                             </>
                             : null
                         }
                     </ul>
                     <div className="navbar-nav mb-2 mb-lg-0">
                         {!!token ?
-                            <NavLink onClick={Logout} className="nav-link" to="/logout">Logout</NavLink>
+                            <>
+                                <NavLink to="/user-info" className="nav-link" >Profile</NavLink>
+                                <NavLink onClick={Logout} className="nav-link" to="/logout">Logout</NavLink>
+                            </>
                             :
                             <>
                                 <NavLink className="nav-link" to="/login">Login</NavLink>

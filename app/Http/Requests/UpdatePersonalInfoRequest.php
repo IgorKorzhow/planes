@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePlaneRequest extends FormRequest
+class UpdatePersonalInfoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,13 @@ class UpdatePlaneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'model' => 'required|max:255',
-            'creation_date' => 'required|date',
-            'basic_seats_number' => 'required|integer',
-            'premium_seats_number' => 'required|integer',
-            'firm_id' => 'required|exists:plane_firms,id',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'second_name' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
+            'passport_number' => 'required|string|max:255',
+            'registration' => 'required|string|max:255',
+            'birth_date' => 'required|date',
         ];
     }
 }

@@ -25,8 +25,8 @@ class Flight extends Model
     ];
 
     protected $casts = [
-        'departure_date_time' => 'datetime',
-        'arrival_date_time' => 'datetime',
+        'departure_date_time' => 'datetime:Y-m-d H:i:s',
+        'arrival_date_time' => 'datetime:Y-m-d H:i:s',
     ];
 
     public function plane(): BelongsTo

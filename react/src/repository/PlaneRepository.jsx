@@ -28,6 +28,16 @@ export default {
             })
     },
 
+    getById(id) {
+        return axiosClient.get(`/planes/${id}`)
+            .catch((error) => {
+                const response = error.response;
+                if (response) {
+                    console.log(response.data.errors);
+                }
+            })
+    },
+
     post(formData) {
         return axiosClient.post("/planes", formData)
             .catch((error) => {
@@ -35,20 +45,12 @@ export default {
             })
     },
 
-    // update(data, id) {
-    //     return axiosClient.patch(`/flights/${id}`, {
-    //         header:  data["header"],
-    //         description: data["description"],
-    //         features: data["features"],
-    //         exercises: data["exercises"]
-    //     })
-    //         .then(response => {
-    //             console.log(response);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    // //         });
-    // // },
+    update(data, id) {
+        return axiosClient.put(`/planes/${id}`, data)
+            .catch(error => {
+                console.log(error);
+            });
+    },
 
     delete(id) {
         return axiosClient.delete(`/planes/${id}`)

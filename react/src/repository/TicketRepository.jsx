@@ -10,4 +10,13 @@ export default {
                 }
             })
     },
+    getTickets() {
+        return axiosClient.get('/tickets')
+            .catch((error) => {
+                const response = error.response;
+                if (response) {
+                    console.log(response.data.errors);
+                }
+            })
+    }
 }
