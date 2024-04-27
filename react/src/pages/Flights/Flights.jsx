@@ -49,8 +49,6 @@ function Flights() {
         }
         let queryParams = [];
 
-        console.log(selectedFieldRef.current.value);
-
         queryParams['search_field'] = selectedFieldRef.current.value;
         queryParams['search_value'] = searchField;
         queryParams['page'] = page;

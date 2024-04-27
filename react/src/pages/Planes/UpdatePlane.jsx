@@ -33,7 +33,7 @@ function UpdatePlane() {
             });
         PlaneRepository.getById(id)
             .then(response => {
-                setPlane(response.data.plane);
+                setPlane(response.data);
                 setIsLoadingPlane(false)
             })
     }, []);
@@ -70,7 +70,7 @@ function UpdatePlane() {
                 <div className="container mt-5 mb-5 w-50">
                     <div className="card p-4 bg-light">
                         <form onSubmit={onSubmit}>
-                            <h4 className="text-center">Создать самолет</h4>
+                            <h4 className="text-center">Обновить самолет</h4>
                             <select ref={firmRef} defaultValue={plane.firm_id}
                                     className="form-select form-select-md mb-3"
                                     id="plane">

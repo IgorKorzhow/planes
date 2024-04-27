@@ -84,7 +84,7 @@ function UpdateFlight() {
                 <div className="container mt-5 mb-5 w-50">
                     <div className="card p-4 bg-light">
                         <form onSubmit={onSubmit}>
-                            <h4 className="text-center">Создать рейс</h4>
+                            <h4 className="text-center">Обновить рейс</h4>
                             <div className="mb-3">
                                 <label htmlFor="header" className="form-label">Город отправления :</label>
                                 <input ref={depurtureRef} type="text" defaultValue={flight.departure_city} className="form-control" required/>
@@ -127,7 +127,7 @@ function UpdateFlight() {
                                 })}
                             </select>
                             <div className="d-flex justify-content-center">
-                                <button type="submit" className="btn btn-outline-primary">Update</button>
+                                <button type="submit" className="btn btn-outline-primary">Обновить</button>
                             </div>
                         </form>
                     </div>

@@ -2,7 +2,7 @@ import axiosClient from "../axios-client.js";
 
 export default {
     get(queryParams) {
-        console.log(queryParams['search']);
+        console.log(queryParams);
         return axiosClient.get(`/flights`, {
             params: {
                 searchField: queryParams['search_field'],

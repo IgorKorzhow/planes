@@ -39,19 +39,19 @@ function Login() {
             <div className="card p-5 bg-light">
                 <form onSubmit={onSubmit}>
                     <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Email address</label>
+                        <label htmlFor="email" className="form-label">Email</label>
                         <input ref={emailRef} type="email" className="form-control" id="email" aria-describedby="emailHelp" required/>
-                        <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                        <div id="emailHelp" className="form-text">Мы не отправим ваш email куда-то еще.</div>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Password</label>
+                        <label htmlFor="password" className="form-label">Пароль</label>
                         <input ref={passwordRef} type="password" className="form-control" id="password" required/>
                     </div>
                     <div className="mb-3">
-                        <Link to="/register">Create new account</Link>
+                        <Link to="/register">Создать новый аккаунт</Link>
                     </div>
                     <div className="d-flex justify-content-center">
-                        <button type="submit" className="btn btn-outline-primary">Login</button>
+                        <button type="submit" className="btn btn-outline-primary">Войти</button>
                     </div>
                 </form>
 
